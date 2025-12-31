@@ -6,7 +6,7 @@ const PORT = 8000;
 
 // CDN static files
 app.set('trust proxy', 1);
-//app.use('/', express.static('public'));
+app.use('/', express.static('public'));
 
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -19,10 +19,7 @@ app.use(function (req, res, next) {
 });
 
 app.all('/host', (req, res) => {
-    res.send(`5.39.13.31 growtopia1.com
-5.39.13.31 growtopia2.com
-5.39.13.31 www.growtopia1.com
-5.39.13.31 www.growtopia2.com`);
+    res.send(`5.39.13.31 growtopia1.com\n5.39.13.31 growtopia2.com\n5.39.13.31 www.growtopia1.com\n5.39.13.31 www.growtopia2.com`);
 });
 
 app.listen(PORT, () => {
