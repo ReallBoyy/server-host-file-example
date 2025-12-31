@@ -5,7 +5,17 @@ const app = express();
 const PORT = 80;
 
 // CDN static files
-app.set('trust proxies', 1);
+app.set('trust proxy', 1);
+
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept',
+    );
+    console.log(`[${new Date().toLocaleString()}] ${req.method} ${req.url} - ${res.statusCode}`);
+    next();
+});
 app.use("/cdn", express.static(path.join(__dirname, "public"));
 
 app.listen(PORT, () => {
