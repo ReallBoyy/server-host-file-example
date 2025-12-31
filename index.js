@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 
 const app = express();
-const PORT = 80;
+const PORT = 8000;
 
 // CDN static files
 app.set('trust proxy', 1);
@@ -16,7 +16,7 @@ app.use(function (req, res, next) {
     console.log(`[${new Date().toLocaleString()}] ${req.method} ${req.url} - ${res.statusCode}`);
     next();
 });
-app.use("/cdn", express.static(path.join(__dirname, "public"));
+app.use("/", express.static(path.join(__dirname, "public"));
 
 app.listen(PORT, () => {
   console.log(`CDN aktif di http://localhost:${PORT}`);
