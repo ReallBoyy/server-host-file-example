@@ -6,7 +6,7 @@ const PORT = 8000;
 
 // CDN static files
 app.set('trust proxy', 1);
-app.use('/', express.static('public'));
+app.use('/', express.static(path(__dirname, 'public')));
 
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
